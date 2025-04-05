@@ -14,7 +14,37 @@ Swagat Foods is a modern, responsive web application for an Indian restaurant. I
 - **Theming**: Custom Material-UI theme for consistent styling.
 
 ## Project Structure
-swagat_foods_vite/ ├── public/ │ ├── images/ # Static images for menu items and other assets │ ├── videos/ # Video assets for the hero section ├── src/ │ ├── assets/ # Additional assets like logos │ ├── components/ # React components for various pages and features │ │ ├── Home.jsx # Home page │ │ ├── Menu.jsx # Menu page │ │ ├── Navbar.jsx # Navigation bar │ │ ├── Login.jsx # Login page │ │ ├── Signup.jsx # Signup page │ │ ├── Checkout.jsx # Checkout page │ │ ├── ChatBot.jsx # Chatbot assistant │ ├── context/ # Context for global state management │ │ ├── CartContext.jsx # Cart context for managing cart state │ ├── App.jsx # Main application component │ ├── main.jsx # Entry point for the React app │ ├── App.css # Global styles │ ├── index.css # Additional global styles ├── .gitignore # Git ignore file ├── index.html # HTML template ├── package.json # Project dependencies and scripts ├── vite.config.js # Vite configuration ├── eslint.config.js # ESLint configuration └── README.md # Project documentation
+swagat_foods_vite/
+├── public/                     # Public assets accessible directly in the browser
+│   ├── images/                 # Static images (menu items, logos, etc.)
+│   ├── videos/                 # Video assets (e.g., hero section background)
+│   └── favicon.ico             # Favicon for the website
+├── src/                        # Source code for the application
+│   ├── assets/                 # Additional assets like logos, icons, etc.
+│   ├── components/             # Reusable React components
+│   │   ├── Home.jsx            # Home page component
+│   │   ├── Menu.jsx            # Menu page component
+│   │   ├── Navbar.jsx          # Navigation bar component
+│   │   ├── Login.jsx           # Login page component
+│   │   ├── Signup.jsx          # Signup page component
+│   │   ├── Checkout.jsx        # Checkout page component
+│   │   ├── ChatBot.jsx         # Chatbot assistant component
+│   │   └── Cart.jsx            # Cart component
+│   ├── context/                # Context API for global state management
+│   │   └── CartContext.jsx     # Context for managing cart state
+│   ├── styles/                 # CSS and styling files
+│   │   ├── App.css             # Global styles
+│   │   └── index.css           # Additional global styles
+│   ├── App.jsx                 # Main application component
+│   ├── main.jsx                # Entry point for the React app
+│   └── routes/                 # React Router configuration (optional)
+│       └── Routes.jsx          # Centralized route definitions
+├── .gitignore                  # Git ignore file
+├── index.html                  # HTML template for the app
+├── package.json                # Project dependencies and scripts
+├── vite.config.js              # Vite configuration file
+├── eslint.config.js            # ESLint configuration file
+└── README.md                   # Project documentation
 
 
 ## Installation
