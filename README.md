@@ -15,36 +15,51 @@ Swagat Foods is a modern, responsive web application for an Indian restaurant. I
 
 ## Project Structure
 swagat_foods_vite/
-├── public/                     # Public assets accessible directly in the browser
-│   ├── images/                 # Static images (menu items, logos, etc.)
-│   ├── videos/                 # Video assets (e.g., hero section background)
-│   └── favicon.ico             # Favicon for the website
-├── src/                        # Source code for the application
-│   ├── assets/                 # Additional assets like logos, icons, etc.
-│   ├── components/             # Reusable React components
-│   │   ├── Home.jsx            # Home page component
-│   │   ├── Menu.jsx            # Menu page component
-│   │   ├── Navbar.jsx          # Navigation bar component
-│   │   ├── Login.jsx           # Login page component
-│   │   ├── Signup.jsx          # Signup page component
-│   │   ├── Checkout.jsx        # Checkout page component
-│   │   ├── ChatBot.jsx         # Chatbot assistant component
-│   │   └── Cart.jsx            # Cart component
-│   ├── context/                # Context API for global state management
-│   │   └── CartContext.jsx     # Context for managing cart state
-│   ├── styles/                 # CSS and styling files
-│   │   ├── App.css             # Global styles
-│   │   └── index.css           # Additional global styles
-│   ├── App.jsx                 # Main application component
-│   ├── main.jsx                # Entry point for the React app
-│   └── routes/                 # React Router configuration (optional)
-│       └── Routes.jsx          # Centralized route definitions
-├── .gitignore                  # Git ignore file
-├── index.html                  # HTML template for the app
-├── package.json                # Project dependencies and scripts
-├── vite.config.js              # Vite configuration file
-├── eslint.config.js            # ESLint configuration file
-└── README.md                   # Project documentation
+├── public/
+│   ├── images/                 # Static images (e.g., /menu-item-1.jpg)
+│   └── favicon.ico
+├── src/
+│   ├── api/                    # (+) For handling API calls (e.g., fetching menu, user auth)
+│   │   ├── authService.js
+│   │   └── menuService.js
+│   ├── assets/                 # Assets imported in components (logos, icons)
+│   ├── components/             # (*) Reusable components used across multiple pages
+│   │   ├── ui/                 # (++) Generic, reusable UI elements (Button, Card, Input)
+│   │   │   ├── Button.jsx
+│   │   │   └── Card.jsx
+│   │   ├── layout/             # (++) Components that define the page structure
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Footer.jsx
+│   │   ├── cart/               # (++) Components related to the cart feature
+│   │   │   ├── Cart.jsx
+│   │   │   └── CartIcon.jsx
+│   │   └── chatbot/            # (++) Components for the chatbot feature
+│   │       └── ChatBot.jsx
+│   ├── context/                # Global state with React Context
+│   │   ├── AuthContext.jsx
+│   │   └── CartContext.jsx
+│   ├── hooks/                  # (+) Custom React hooks (e.g., useApi, useAuth)
+│   │   └── useCart.js
+│   ├── pages/                  # (*) Top-level components for each route/page
+│   │   ├── HomePage.jsx
+│   │   ├── MenuPage.jsx
+│   │   ├── LoginPage.jsx
+│   │   ├── SignupPage.jsx
+│   │   └── CheckoutPage.jsx
+│   ├── routes/                 # Routing configuration
+│   │   └── AppRoutes.jsx
+│   ├── styles/                 # Global styles
+│   │   ├── _theme.css          # (~) CSS variables for theme (colors, fonts)
+│   │   └── global.css
+│   ├── utils/                  # (+) Helper functions (e.g., formatCurrency, validators)
+│   ├── App.jsx                 # Main application component (layout and routing)
+│   └── main.jsx                # Application entry point
+├── .gitignore
+├── index.html
+├── package.json
+├── vite.config.js
+├── eslint.config.js
+└── README.me
 
 
 ## Installation
