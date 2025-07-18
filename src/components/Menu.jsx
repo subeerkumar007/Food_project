@@ -9,7 +9,6 @@ import {
   Typography,
   Button,
   Box,
-  Chip,
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useCart } from '../context/CartContext';
@@ -71,8 +70,8 @@ const menuData = {
     },
     {
       id: 7,
-      name: 'jalebi',
-      description: 'sweet and crispy jalebi with sugar syrup',
+      name: 'Jalebi',
+      description: 'Sweet and crispy jalebi with sugar syrup',
       price: 6.99,
       image: '/images/jalebi.jpg',
       category: 'desserts',
@@ -100,7 +99,8 @@ const menuData = {
 
 const Menu = () => {
   const { category } = useParams();
-  const items = menuData[category] || [];
+  const validCategory = category || 'appetizers';
+  const items = menuData[validCategory] || [];
   const { addToCart } = useCart();
 
   const handleAddToCart = (item) => {
@@ -115,8 +115,9 @@ const Menu = () => {
         gutterBottom
         sx={{ textTransform: 'capitalize', mb: 4 }}
       >
-        {category.replace('-', ' ')}
+        {validCategory.replace('-', ' ')}
       </Typography>
+
       <Grid container spacing={4}>
         {items.map((item) => (
           <Grid item key={item.id} xs={12} sm={6} md={4}>
@@ -146,7 +147,14 @@ const Menu = () => {
                 <Typography variant="body2" color="text.secondary" paragraph>
                   {item.description}
                 </Typography>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    mt: 2,
+                  }}
+                >
                   <Typography variant="h6" color="primary">
                     ${item.price}
                   </Typography>
@@ -164,8 +172,14 @@ const Menu = () => {
           </Grid>
         ))}
       </Grid>
+
+      {items.length === 0 && (
+        <Typography variant="body1" color="textSecondary" sx={{ mt: 2 }}>
+          No items available in this category.
+        </Typography>
+      )}
     </Container>
   );
 };
 
-export default Menu; 
+export default Menu;

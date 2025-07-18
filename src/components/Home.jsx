@@ -17,21 +17,24 @@ const featuredItems = [
     name: 'Butter Chicken',
     description: 'Tender chicken in rich, creamy tomato sauce',
     image: "/images/butter_chicken.jpg",
-    price: '$15.99'
+    price: '$15.99',
+    category: 'main-course'
   },
   {
     id: 2,
     name: 'Paneer Tikka',
     description: 'Grilled cottage cheese marinated in spiced yogurt',
     image: "/images/paneer-tikka.jpg",
-    price: '$14.99'
+    price: '$14.99',
+    category: 'main-course'
   },
   {
     id: 3,
     name: 'Biryani',
     description: 'Fragrant basmati rice cooked with aromatic spices',
     image: "/images/Veg_biriyani.jpg",
-    price: '$16.99'
+    price: '$16.99',
+    category: 'main-course'
   }
 ];
 
@@ -127,7 +130,7 @@ const Home = () => {
               '&:hover': { backgroundColor: '#000', color: '#fff' },
               borderRadius: '30px', px: 4, py: 1.5, fontSize: '1.1rem', textTransform: 'none'
             }}
-            onClick={() => navigate('/menu')}>
+            onClick={() => navigate('/menu/appetizers')}>
             <span>VIEW OUR MENU</span>
           </Button>
         </Container>
@@ -168,20 +171,6 @@ const Home = () => {
         </Container>
       </Box>
 
-      <Box sx={{ bgcolor: '#f8f8f8', py: 8 }}>
-        <Container maxWidth="md">
-          <Typography variant="h3" gutterBottom textAlign="center" sx={{ mb: 4, fontWeight: 'bold' }}>
-            OUR STORY
-          </Typography>
-          <Typography variant="body1" paragraph textAlign="center">
-            Founded in 1990, our restaurant has been serving exceptional cuisine with a focus on quality ingredients and memorable dining experiences.
-          </Typography>
-          <Typography variant="body1" paragraph textAlign="center">
-            We believe in supporting local farmers and producers, ensuring the freshest seasonal ingredients make it to your plate.
-          </Typography>
-        </Container>
-      </Box>
-
       <Box sx={{ bgcolor: '#fff', py: 8 }}>
         <Container>
           <Typography variant="h3" gutterBottom textAlign="center" sx={{ mb: 4, fontWeight: 'bold' }}>
@@ -206,7 +195,7 @@ const Home = () => {
                     </Typography>
                     <Button
                       variant="contained"
-                      onClick={() => navigate('/menu')}
+                      onClick={() => navigate(`/menu/${item.category}`)}
                       sx={{
                         backgroundColor: '#d4af37', color: '#000',
                         '&:hover': { backgroundColor: '#000', color: '#fff' },

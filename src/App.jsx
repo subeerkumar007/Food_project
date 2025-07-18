@@ -26,14 +26,14 @@ function App() {
       <CartProvider>
         <Router>
           <Navbar />
-          <Box 
-            sx={{ 
+          <Box
+            sx={{
               pt: 8,
               minHeight: '100vh',
               background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
               '& .home-page': {
                 background: 'none',
-              }
+              },
             }}
           >
             <Routes>
@@ -42,6 +42,15 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/checkout" element={<Checkout />} />
+              {/* fallback route if no match */}
+              <Route
+                path="*"
+                element={
+                  <Box sx={{ p: 4, textAlign: 'center' }}>
+                    <h2>404 - Page Not Found</h2>
+                  </Box>
+                }
+              />
             </Routes>
           </Box>
         </Router>

@@ -15,14 +15,14 @@ import {
   RadioGroup,
   FormControlLabel,
   FormControl,
-  FormLabel,
   Divider,
-  Alert,
+  List,
+  ListItem,
+  ListItemText,
 } from '@mui/material';
 import { useCart } from '../context/CartContext';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import PaymentIcon from '@mui/icons-material/Payment';
 import QrCodeIcon from '@mui/icons-material/QrCode';
 
 const steps = ['Order Summary', 'Delivery Details', 'Payment'];
@@ -64,7 +64,6 @@ const Checkout = () => {
   };
 
   const handlePlaceOrder = () => {
-    // In a real app, you would send this data to your backend
     console.log('Order placed:', { formData, paymentMethod, cartItems });
     setOrderPlaced(true);
     clearCart();
@@ -83,10 +82,10 @@ const Checkout = () => {
                 <ListItem key={item.id}>
                   <ListItemText
                     primary={item.name}
-                    secondary={`$${item.price} x ${item.quantity}`}
+                    secondary={`$${item.price} x ${item.quantity || 1}`}
                   />
                   <Typography>
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ${(item.price * (item.quantity || 1)).toFixed(2)}
                   </Typography>
                 </ListItem>
               ))}
@@ -120,79 +119,20 @@ const Checkout = () => {
               Delivery Details
             </Typography>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  label="Full Name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  label="Email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  label="Phone Number"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  label="Address"
-                  name="address"
-                  multiline
-                  rows={3}
-                  value={formData.address}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  label="City"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  label="State"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  label="ZIP Code"
-                  name="zipCode"
-                  value={formData.zipCode}
-                  onChange={handleInputChange}
-                />
-              </Grid>
+              {['name', 'email', 'phone', 'address', 'city', 'state', 'zipCode'].map((field) => (
+                <Grid item xs={12} sm={field === 'city' || field === 'state' ? 6 : 12} key={field}>
+                  <TextField
+                    required
+                    fullWidth
+                    label={field.replace(/^\w/, (c) => c.toUpperCase())}
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleInputChange}
+                    multiline={field === 'address'}
+                    rows={field === 'address' ? 3 : 1}
+                  />
+                </Grid>
+              ))}
             </Grid>
           </Box>
         );
@@ -304,4 +244,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout; 
+export default Checkout;
