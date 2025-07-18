@@ -12,6 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background-color: #fff;
 }
 
 /* Video background styles */
@@ -28,7 +29,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.video-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
   z-index: 2;
 }
 
@@ -54,6 +62,7 @@ body {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1s ease forwards;
+  text-align: center;
 }
 
 /* Flowing text animations */
@@ -92,8 +101,24 @@ body {
 }
 
 .card-hover:hover {
-  transform: translateY(-20px) scale(1.02);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Footer social icons */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer-icons svg {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-icons svg:hover {
+  color: #d4af37;
 }
 
 /* Animations */
@@ -133,12 +158,21 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
+/* Section padding */
+.section {
+  padding: 4rem 0;
+}
+
+.section-alt {
+  background-color: #f8f8f8;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero-video {
     object-position: center;
   }
-  
+
   .flowing-text span {
     animation-delay: 0.1s;
   }
